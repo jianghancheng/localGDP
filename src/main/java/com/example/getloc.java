@@ -7,12 +7,15 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.glassfish.grizzly.Reader;
 import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+
 
 
 
@@ -32,6 +35,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.rmi.AccessException;
 import java.util.concurrent.TimeUnit;
 
@@ -67,7 +71,7 @@ public static 	LoadingCache<String, Double> gdpcache = CacheBuilder.newBuilder()
 				+ ","
 				+ lng
 				+ "&key=AIzaSyD1qdYjyUp9lxUQq-ol7F5-fnsEjjen1co";
-        InputStream inputStream = null;
+		InputStream inputStream = null;
         String json = "";
 
         try {           

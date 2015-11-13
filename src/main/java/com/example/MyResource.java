@@ -17,7 +17,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.json.simple.parser.ParseException;
 import org.xml.sax.SAXException;
 import com.thoughtworks.xstream.XStream;
-
+import javax.ws.rs.core.Response;
 /**
  * Root resource (exposed at "myresource" path)
  */
@@ -25,7 +25,7 @@ import com.thoughtworks.xstream.XStream;
 public class MyResource {
   @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public StreamingOutput getDGP(@QueryParam("lat") final double latitude, @QueryParam("lng") final  double longitude) throws IOException, ParserConfigurationException, SAXException {
+    public Response getDGP(@QueryParam("lat") final double latitude, @QueryParam("lng") final  double longitude) throws IOException, ParserConfigurationException, SAXException {
     	  final XStream xs = new XStream();
     	//final gdpService GDP=new gdpService();
     	final getloc GDP=new getloc();
@@ -56,7 +56,7 @@ public class MyResource {
 			 writer.flush();
           }
       };
-      return op;
+      return Response.ok(op).header("Access-Control-Allow-Origin", "*").type(MediaType.TEXT_PLAIN).build();
   }
 }
 	
